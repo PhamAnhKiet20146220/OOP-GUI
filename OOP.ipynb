@@ -1,0 +1,903 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "79fdfd5d-14e2-4306-b6d9-091fad16ea33",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Nhan\n",
+      "20146002\n",
+      "M\n",
+      "learning\n",
+      "Student ID: 20146002\n",
+      "Final Grade: 7.0\n",
+      "Hello Nhan\n"
+     ]
+    }
+   ],
+   "source": [
+    "class student():\n",
+    "    def __init__ (self,name,StID,gender):\n",
+    "        self.name = name\n",
+    "        self.StID = StID\n",
+    "        self.gender = gender\n",
+    "        self.status = \"learning\"\n",
+    "    def Greeting(self):\n",
+    "        print(\"Hello\", self.name)\n",
+    "    def Cal(self,Mid,Final):\n",
+    "        Grade = (Mid+Final)/2\n",
+    "        print(\"Student ID:\", self.StID)\n",
+    "        print(\"Final Grade:\", Grade)    \n",
+    "S1 = student(\"Nhan\",\"20146002\",\"M\")\n",
+    "\n",
+    "S2 = student(\"Ha\",\"20146247\",\"WM\")\n",
+    "\n",
+    "print(S1.name)\n",
+    "print(S1.StID)\n",
+    "print(S1.gender)\n",
+    "print(S1.status)\n",
+    "S1.Cal(5,9)\n",
+    "S1.Greeting()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "ec48cae3-b23d-4bf4-a166-910d5671122e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3\n",
+      "4\n",
+      "We have 1-instance in total\n",
+      "We have 2-instance in total\n",
+      "We have 2-instance in total\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Student():\n",
+    "    n = 0\n",
+    "    def __init__(self, sid, name, gender):\n",
+    "        self.sid = sid\n",
+    "        self.name = name\n",
+    "        self.gender = gender\n",
+    "        self.type = \"learning\"\n",
+    "        Student.n +=1\n",
+    "    def say_name(self):\n",
+    "        print(\"My name is\" + self.name)\n",
+    "    def report(self, score):\n",
+    "        self.say_name()\n",
+    "        print(\"My id is: \" + self.sid)\n",
+    "        print(\"My score is: \" + str(score))\n",
+    "    def num_instance(self):\n",
+    "        print(f\"We have {Student.n}-instance in total\")\n",
+    "    print(\"3\")\n",
+    "print(\"4\")\n",
+    "student1 = Student(\"001\", \"Susan\", \"F\")\n",
+    "student1.num_instance()\n",
+    "student2 = Student(\"002\", \"Mike\", \"M\")\n",
+    "student1.num_instance()\n",
+    "student2.num_instance()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "d47d0a18-b81e-4628-bddc-487ebe7232a2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "We have 10 points saved\n",
+      "{'time': array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), 'data': array([ 8, -8, -2, -7,  6, -2, -8, -1, -4, -1])}\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Sensor():\n",
+    "    def __init__(self, name, location, record_data):\n",
+    "        self.name = name\n",
+    "        self.loction = location\n",
+    "        self.record_data = record_data\n",
+    "        self.data = {}\n",
+    "    def add_data(self, t, data):\n",
+    "        self.data[\"time\"] = t\n",
+    "        self.data[\"data\"] = data\n",
+    "        print(f\"We have {len(data)} points saved\")\n",
+    "    def clear_data(self):\n",
+    "        self.data = {}\n",
+    "        print(\"Data cleared!\")\n",
+    "        \n",
+    "import numpy as np\n",
+    "\n",
+    "sensor1 = Sensor(\"sensor1\",\"Berkeley\",\"2019-01-01\")\n",
+    "data = np.random.randint(-10, 10, 10)\n",
+    "sensor1.add_data(np.arange(10), data)\n",
+    "print(sensor1.data)\n",
+    "\n",
+    "    \n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "bb883496-ef84-45f5-b30d-c309520c1080",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Sensor():\n",
+    "    def __init__(self, name, location, record_data):\n",
+    "        self.name = name\n",
+    "        self.loction = location\n",
+    "        self.record_data = record_data\n",
+    "        self.data = {}\n",
+    "    def add_data(self, t, data):\n",
+    "        self.data[\"time\"] = t\n",
+    "        self.data[\"data\"] = data\n",
+    "        print(f\"We have {len(data)} points saved\")\n",
+    "    def clear_data(self):\n",
+    "        self.data = {}\n",
+    "        print(\"Data cleared!\")\n",
+    "        \n",
+    "import numpy as np\n",
+    "\n",
+    "class Accelerometer(Sensor):\n",
+    "    def show_type(self):\n",
+    "        print(\"I am an accelerometer!\")\n",
+    "class Acc():\n",
+    "    def show_type(self):\n",
+    "        print(\"I am an acc!\")\n",
+    "ss1 = Sensor(\"S1\",\"HCM\",\"01/07/2023\")\n",
+    "ss2 = Accelerometer(\"S2\",\"VN\",\"02/07/2023\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "0ff0247e-b880-4429-b7c1-bcc18f439434",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10\n",
+      "10\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "#bai 5 cua 7.4.2\n",
+    "import matplotlib.pyplot as plt\n",
+    "class Point():\n",
+    "    def __init__(self, x, y):\n",
+    "        self.x = x\n",
+    "        self.y = y\n",
+    "        #print(x,y) neu ham o duoi ko co self.x self.y ma chi co x,y\n",
+    "    def plot_point(self):\n",
+    "        plt.plot(self.x, self.y, 'ro')\n",
+    "        plt.show()\n",
+    "A = Point(10,10)\n",
+    "print(A.x)\n",
+    "print(A.y)\n",
+    "A.plot_point()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "9b24544b-0d96-4fca-9526-3da719db3abe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10.0\n",
+      "20.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#bai 6 cua 7.4.2\n",
+    "import matplotlib.pyplot as plt\n",
+    "class Point():\n",
+    "    def __init__(self, x, y):\n",
+    "        self.x = x\n",
+    "        self.y = y\n",
+    "        #print(x,y) neu ham o duoi ko co self.x self.y ma chi co x,y\n",
+    "    def plot_point(self):\n",
+    "        plt.plot(self.x, self.y, 'ro')\n",
+    "        plt.show()\n",
+    "    def cal_dist(self, x, y):\n",
+    "        dist = ((self.x-x)**2+(self.y-y)**2)**0.5\n",
+    "        print(dist)\n",
+    "A = Point(10,20)\n",
+    "B = Point(0,0)\n",
+    "A.cal_dist(0,20)\n",
+    "B.cal_dist(0,20)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "6c2e68ec-c976-46a6-ba6b-006f2e15b17e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "BMW\n",
+      "I am ready to drive!\n",
+      "Key is not right\n",
+      "I am still running!\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Car():\n",
+    "    def __init__(self, brand, color):\n",
+    "        self.brand = brand\n",
+    "        self.color = color\n",
+    "    def start_my_car(self):\n",
+    "        print(\"I am ready to drive!\")\n",
+    "class Truck(Car):\n",
+    "    def __init__(self, brand, color, size):\n",
+    "        super().__init__(brand, color)\n",
+    "        self.size = size\n",
+    "    def start_my_car(self, key):\n",
+    "        if key == \"truck_key\":\n",
+    "            print(\"I am ready to drive!\")\n",
+    "        else:\n",
+    "            print(\"Key is not right\")\n",
+    "    def stop_my_car(self, brake):\n",
+    "        if brake:\n",
+    "            print(\"The engine is stopped!\")\n",
+    "        else:\n",
+    "            print(\"I am still running!\")\n",
+    "            \n",
+    "Xe_A = Car(\"BMW\",\"Black\")\n",
+    "Xe_B = Truck(\"Ford\",\"Pink\",\"18-wheel\")\n",
+    "print(Xe_A.brand)\n",
+    "Xe_A.start_my_car()\n",
+    "Xe_B.start_my_car(\"key\")\n",
+    "Xe_B.stop_my_car(False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "d2095f63-b6f7-435b-89de-2ba9e352f5b3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['this', 'is', 'a', 'test', 'of', 'the', 'class']\n",
+      "Number of words: 7\n",
+      "Number of words starting with \"t\": 3\n",
+      "Number of 2-letter words: 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "from string import punctuation\n",
+    "class Analyzer:\n",
+    "    def __init__(self, s):\n",
+    "#dung de xoa ki tu dac biet\n",
+    "        for c in punctuation:\n",
+    "            s = s.replace(c,'')\n",
+    "            s = s.lower()\n",
+    "            self.words = s.split()\n",
+    "    def number_of_words(self):\n",
+    "        return len(self.words)\n",
+    "    def starts_with(self, s):\n",
+    "        return len([w for w in self.words if w[:len(s)]==s])\n",
+    "    def number_with_length(self, n):\n",
+    "        return len([w for w in self.words if len(w)==n])\n",
+    "s = 'This is a test of the class.'\n",
+    "analyzer = Analyzer(s)\n",
+    "print(analyzer.words)\n",
+    "print('Number of words:', analyzer.number_of_words())\n",
+    "print('Number of words starting with \"t\":', analyzer.starts_with('t'))\n",
+    "print('Number of 2-letter words:', analyzer.number_with_length(2))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "b504d7c0-6974-4385-aeb6-938a5f6641cd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "- - - \n",
+      "- - - \n",
+      "- - - \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 1:  (0,0)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "- - - \n",
+      "- - - \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 2:  (1,0)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "O - - \n",
+      "- - - \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 1:  (2,2)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "O - - \n",
+      "- - X \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 2:  (1,2)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "O - O \n",
+      "- - X \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 1:  (2,1)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "O - O \n",
+      "- X X \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 2:  (2,1)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "O - O \n",
+      "- X X \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 2:  (2,2)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - - \n",
+      "O - O \n",
+      "- X X \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 2:  (0,2)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - O \n",
+      "O - O \n",
+      "- X X \n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter spot, player 1:  (1,1)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "X - O \n",
+      "O X O \n",
+      "- X X \n",
+      "Player 1 wins!\n"
+     ]
+    }
+   ],
+   "source": [
+    "class tic_tac_toe:\n",
+    "    def __init__(self):\n",
+    "        self.B = [[0,0,0],\n",
+    "                  [0,0,0],\n",
+    "                  [0,0,0]]\n",
+    "        self.player = 1\n",
+    "    def get_open_spots(self):\n",
+    "        return [[r,c] for r in range(3) for c in range(3)\n",
+    "            if self.B[r][c]==0]\n",
+    "    def is_valid_move(self,r,c):\n",
+    "        if 0<=r<=2 and 0<=c<=2 and self.B[r][c]==0:\n",
+    "            return True\n",
+    "        return False\n",
+    "    def make_move(self,r,c):\n",
+    "        if self.is_valid_move(r,c):\n",
+    "            self.B[r][c] = self.player\n",
+    "            self.player = (self.player+2)%2 + 1\n",
+    "    def check_for_winner(self):\n",
+    "        for c in range(3):\n",
+    "            if self.B[0][c]==self.B[1][c]==self.B[2][c]!=0:\n",
+    "                return self.B[0][c]\n",
+    "        for r in range(3):\n",
+    "            if self.B[r][0]==self.B[r][1]==self.B[r][2]!=0:\n",
+    "                return self.B[r][0]\n",
+    "        if self.B[0][0]==self.B[1][1]==self.B[2][2]!=0:\n",
+    "            return self.B[0][0]\n",
+    "        if self.B[2][0]==self.B[1][1]==self.B[0][2]!=0:\n",
+    "            return self.B[2][0]\n",
+    "        if self.get_open_spots()==[]:\n",
+    "            return 0\n",
+    "        return -1\n",
+    "def print_board():\n",
+    "    chars = ['-', 'X', 'O']\n",
+    "    for r in range(3):\n",
+    "        for c in range(3):\n",
+    "            print(chars[game.B[r][c]], end=' ')\n",
+    "        print()\n",
+    "game = tic_tac_toe()\n",
+    "while game.check_for_winner()==-1:\n",
+    "    print_board()\n",
+    "    r,c = eval(input('Enter spot, player ' + str(game.player) + ': '))\n",
+    "    game.make_move(r,c)\n",
+    "print_board()\n",
+    "x = game.check_for_winner()\n",
+    "if x==0:\n",
+    "    print(\"It's a draw.\")\n",
+    "else:\n",
+    "    print('Player', x, 'wins!')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "3343a406-7f6d-4c17-8441-e7d5c6aca4dd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "After 5 years you have: 6691.127888000002 dollars\n",
+      "Principal 5000 , Interest rate 6 %\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Investment:\n",
+    "    def __init__(self,p,i):\n",
+    "        self.p = p\n",
+    "        self.i = i\n",
+    "    def value_after(self,n):\n",
+    "        P = (self.p*(1+self.i/100)**n)\n",
+    "        print(\"After\", n, \"years you have:\", P, \"dollars\")\n",
+    "    def _str_(self):\n",
+    "        print(\"Principal\", self.p, \", Interest rate\", self.i, \"%\")\n",
+    "A = Investment(5000,6)\n",
+    "A.value_after(5)\n",
+    "A._str_()\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "80c32618-06f9-4f8e-bef5-36fe4c945f0e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "cost for 111 shoes = 2664.0\n",
+      "remaining stock: 89\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "#14.7\n",
+    "#Ex2,3,4,5,6,7,8,10,11\n",
+    "class Product:\n",
+    "    def __init__(self, name, amount, price):\n",
+    "        self.name = name\n",
+    "        self.amount = amount\n",
+    "        self.price = price\n",
+    "    def get_price(self, number_items):\n",
+    "        if number_items < 10:\n",
+    "            return self.price * number_items\n",
+    "        elif 10 <= number_items < 100:\n",
+    "            return 0.9 * self.price * number_items\n",
+    "        else:\n",
+    "            return 0.8 * self.price * number_items\n",
+    "    def make_purchase(self, quantity):\n",
+    "        self.amount -= quantity\n",
+    "name, amount, price = 'shoes', 200, 30\n",
+    "shoes = Product(name, amount, price)\n",
+    "q = 111\n",
+    "print(f'cost for {q} {shoes.name} = {shoes.get_price(q)}')\n",
+    "shoes.make_purchase(q)\n",
+    "print(f'remaining stock: {shoes.amount}\\n')\n",
+    "\n",
+    "\n",
+    "        \n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "6541b40c-418a-4d7b-a778-e429249579ea",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "password123\n",
+      "Password changed successfully!\n",
+      "Password change failed. New password cannot be the same as old passwords.\n",
+      "False\n",
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Password_manager:\n",
+    "    def __init__(self, initial_password):\n",
+    "        self.old_passwords = [initial_password]\n",
+    "    \n",
+    "    def get_password(self):\n",
+    "        return self.old_passwords[-1]\n",
+    "    \n",
+    "    def set_password(self, new_password):\n",
+    "        if new_password not in self.old_passwords:\n",
+    "            self.old_passwords.append(new_password)\n",
+    "            return True\n",
+    "        else:\n",
+    "            return False\n",
+    "    \n",
+    "    def is_correct(self, password_guess):\n",
+    "        return password_guess == self.old_passwords[-1]\n",
+    "# Create a Password_manager instance with initial password \"password123\"\n",
+    "password_manager = Password_manager(\"password123\")\n",
+    "\n",
+    "# Get the current password\n",
+    "print(password_manager.get_password())  \n",
+    "\n",
+    "# Try to set a new password that's different from the current one\n",
+    "password_changed = password_manager.set_password(\"new_password\")\n",
+    "if password_changed:\n",
+    "    print(\"Password changed successfully!\")\n",
+    "else:\n",
+    "    print(\"Password change failed. New password cannot be the same as old passwords.\")\n",
+    "\n",
+    "# Try to set a new password that's the same as the current one\n",
+    "password_changed = password_manager.set_password(\"password123\")\n",
+    "if password_changed:\n",
+    "    print(\"Password changed successfully!\")\n",
+    "else:\n",
+    "    print(\"Password change failed. New password cannot be the same as old passwords.\")\n",
+    "\n",
+    "# Check if a password guess is correct\n",
+    "print(password_manager.is_correct(\"password123\")) \n",
+    "print(password_manager.is_correct(\"wrong_password\"))  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "78478046",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3:50\n",
+      "0:03:50\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Time:\n",
+    "    def __init__(self, seconds):\n",
+    "        self.seconds = seconds\n",
+    "    \n",
+    "    def convert_to_minutes(self):\n",
+    "        minutes = self.seconds // 60\n",
+    "        seconds = self.seconds % 60\n",
+    "        return f\"{minutes}:{seconds:02}\"\n",
+    "    \n",
+    "    def convert_to_hours(self):\n",
+    "        hours = self.seconds // 3600\n",
+    "        minutes = (self.seconds % 3600) // 60\n",
+    "        seconds = self.seconds % 60\n",
+    "        return f\"{hours}:{minutes:02}:{seconds:02}\"\n",
+    "# Create a Time instance with 230 seconds\n",
+    "time = Time(230)\n",
+    "\n",
+    "# Convert to minutes and print the result\n",
+    "print(time.convert_to_minutes()) \n",
+    "\n",
+    "# Convert to hours and print the result\n",
+    "print(time.convert_to_hours())  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "a213ec07",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['hello', 'world']\n",
+      "['python', 'programming']\n",
+      "['world']\n",
+      "['racecar']\n",
+      "['hello']\n",
+      "['hello', 'world', 'racecar', 'python', 'programming']\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Wordplay:\n",
+    "    def __init__(self, words):\n",
+    "        self.words = words\n",
+    "    \n",
+    "    def words_with_length(self, length):\n",
+    "        return [word for word in self.words if len(word) == length]\n",
+    "    \n",
+    "    def starts_with(self, s):\n",
+    "        return [word for word in self.words if word.startswith(s)]\n",
+    "    \n",
+    "    def ends_with(self, s):\n",
+    "        return [word for word in self.words if word.endswith(s)]\n",
+    "    \n",
+    "    def palindromes(self):\n",
+    "        return [word for word in self.words if word == word[::-1]]\n",
+    "    \n",
+    "    def only(self, L):\n",
+    "        return [word for word in self.words if set(word).issubset(set(L))]\n",
+    "    \n",
+    "    def avoids(self, L):\n",
+    "        return [word for word in self.words if not set(word).intersection(set(L))]\n",
+    "# Create a Wordplay instance with a list of words\n",
+    "wordplay = Wordplay([\"hello\", \"world\", \"racecar\", \"python\", \"programming\"])\n",
+    "\n",
+    "# Get all words with length 5\n",
+    "print(wordplay.words_with_length(5))  \n",
+    "\n",
+    "# Get all words that start with 'p'\n",
+    "print(wordplay.starts_with('p'))  \n",
+    "\n",
+    "# Get all words that end with 'd'\n",
+    "print(wordplay.ends_with('d'))  \n",
+    "\n",
+    "# Get all palindromes\n",
+    "print(wordplay.palindromes()) \n",
+    "\n",
+    "# Get all words that contain only the letters 'h', 'e', 'l', 'o'\n",
+    "print(wordplay.only('helo'))  \n",
+    "\n",
+    "# Get all words that contain none of the letters 'z', 'x', 'q'\n",
+    "print(wordplay.avoids('zxq'))  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "932fcfe3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.75\n",
+      "1.6093431309547093\n"
+     ]
+    }
+   ],
+   "source": [
+    "class Converter:\n",
+    "    def __init__(self, length, unit):\n",
+    "        self.length = length\n",
+    "        self.unit = unit\n",
+    "\n",
+    "    def inches(self):\n",
+    "        if self.unit == 'inches':\n",
+    "            return self.length\n",
+    "        elif self.unit == 'feet':\n",
+    "            return self.length * 12\n",
+    "        elif self.unit == 'yards':\n",
+    "            return self.length * 36\n",
+    "        elif self.unit == 'miles':\n",
+    "            return self.length * 63360\n",
+    "        elif self.unit == 'kilometers':\n",
+    "            return self.length * 39370.1\n",
+    "        elif self.unit == 'meters':\n",
+    "            return self.length * 39.3701\n",
+    "        elif self.unit == 'centimeters':\n",
+    "            return self.length * 0.393701\n",
+    "        elif self.unit == 'millimeters':\n",
+    "            return self.length * 0.0393701\n",
+    "\n",
+    "    def feet(self):\n",
+    "        return self.inches() / 12\n",
+    "\n",
+    "    def yards(self):\n",
+    "        return self.inches() / 36\n",
+    "\n",
+    "    def miles(self):\n",
+    "        return self.inches() / 63360\n",
+    "\n",
+    "    def kilometers(self):\n",
+    "        return self.inches() / 39370.1\n",
+    "\n",
+    "    def meters(self):\n",
+    "        return self.inches() / 39.3701\n",
+    "\n",
+    "    def centimeters(self):\n",
+    "        return self.inches() / 0.393701\n",
+    "\n",
+    "    def millimeters(self):\n",
+    "        return self.inches() / 0.0393701\n",
+    "c = Converter(9, 'inches')\n",
+    "print(c.feet())  \n",
+    "\n",
+    "c = Converter(1, 'miles')\n",
+    "print(c.kilometers())  \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "05b904fd",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'Standard_deck' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-8-1cc0bbfa4602>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[0;32m     23\u001b[0m         \u001b[1;32melse\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     24\u001b[0m             \u001b[0mprint\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m\"Player 1 wins!\"\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m---> 25\u001b[1;33m \u001b[0mgame\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mWar\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m     26\u001b[0m \u001b[0mgame\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mplay\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;32m<ipython-input-8-1cc0bbfa4602>\u001b[0m in \u001b[0;36m__init__\u001b[1;34m(self)\u001b[0m\n\u001b[0;32m      3\u001b[0m \u001b[1;32mclass\u001b[0m \u001b[0mWar\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      4\u001b[0m     \u001b[1;32mdef\u001b[0m \u001b[0m__init__\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 5\u001b[1;33m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mdeck\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mStandard_deck\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mcards\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m      6\u001b[0m         \u001b[0mshuffle\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mdeck\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      7\u001b[0m         \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mplayer1_deck\u001b[0m \u001b[1;33m=\u001b[0m \u001b[0mself\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mdeck\u001b[0m\u001b[1;33m[\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;36m26\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mNameError\u001b[0m: name 'Standard_deck' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9e17963c",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
